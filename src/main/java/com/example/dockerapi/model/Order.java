@@ -19,6 +19,16 @@ public class Order {
     @Column(nullable = false)
     private LocalDateTime orderDate;
 
+    @Column(nullable = false)
+    private Long userId;
+
+    @Column(nullable = false)
+    private Long productId;
+
+    @Column(nullable = false)
+    private String productName;
+
+    // --- Getter メソッド ---
     public Long getOrderId() {
         return orderId;
     }
@@ -35,6 +45,19 @@ public class Order {
         return orderDate;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    // --- Setter メソッド ---
     public void setOrderId(Long orderId) {
         this.orderId = orderId;
     }
@@ -49,5 +72,17 @@ public class Order {
 
     public void setOrderDate(LocalDateTime orderDate) {
         this.orderDate = orderDate;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }

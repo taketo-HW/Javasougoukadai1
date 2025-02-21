@@ -21,7 +21,6 @@ public class User {
     @Column(nullable = false)
     private int old;
 
-    // ✅ Getter メソッド
     public Long getUserId() {
         return userId;
     }

@@ -35,6 +35,9 @@ public class OrderService {
             order.setOrderStatus(newOrder.getOrderStatus());
             order.setTotalPrice(newOrder.getTotalPrice());
             order.setOrderDate(newOrder.getOrderDate());
+            order.setUserId(newOrder.getUserId());
+            order.setProductId(newOrder.getProductId());
+            order.setProductName(newOrder.getProductName());
             return orderRepository.save(order);
         }).orElse(null);
     }
