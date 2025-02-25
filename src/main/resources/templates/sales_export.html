@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>売上CSV出力</title>
+    <link rel="stylesheet" href="sales_export.css">
+    <link th:href="@{css/sales_export.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="main">ユーザー一覧</a></li>
+                <li><a href="orders">注文一覧</a></li>
+                <li><a href="products">商品一覧</a></li>
+                <li><a href="sales_export" class="active">売上CSV出力</a></li>
+                <li><a href="inventory_export">在庫CSV出力</a></li>
+            </ul>
+        </nav>
+        <main>
+            <h1 class="page-title">売上CSV出力</h1>
+            <form action="/sales/export" method="GET">
+                <table>
+                    <tr>
+                        <td><input type="text" id="year" name="year" size="4" placeholder="YYYY"></td>
+                        <td>年</td>
+                        <td><input type="text" id="month" name="month" size="2" placeholder="MM"></td>
+                        <td>月</td>
+                        <td><input type="text" id="day" name="day" size="2" placeholder="DD"></td>
+                        <td>日</td>
+                    </tr>
+                </table>
+                <br>
+                <button type="submit">出力</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>

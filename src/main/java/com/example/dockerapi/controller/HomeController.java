@@ -25,4 +25,14 @@ public class HomeController {
     public String productsPage() {
         return "products"; // templates/products.html を表示
     }
+
+    @GetMapping("/inventory_export")
+    public String inventory_export() {
+        return "inventory_export"; // templates/inventory_export.html を表示
+    }
+
+    @GetMapping("/sales_export")
+    public String sales_export() {
+        return "sales_export"; // templates/sales_export.html を表示
+    }
 }

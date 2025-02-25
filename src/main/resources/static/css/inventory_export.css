@@ -3,22 +3,27 @@ body {
     margin: 0;
     padding: 0;
 }
+
 .container {
     display: flex;
     height: 100vh; /* 画面いっぱいに高さを確保 */
 }
+
 nav {
     width: 200px;
     padding: 20px;
     background: #f0f0f0;
 }
+
 nav ul {
     list-style: none;
     padding: 0;
 }
+
 nav ul li {
     margin: 10px 0;
 }
+
 nav ul li a {
     text-decoration: none;
     color: black;
@@ -27,19 +32,41 @@ nav ul li a {
 nav ul li a.active {
     text-decoration: underline;
     font-weight: bold;
-    color: #007BFF; /* アクティブ時の色を青系に変更 */
-    text-decoration: underline;
 }
 
 main {
     flex-grow: 1;
     padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-table {
-    width: 100%;
-    border-collapse: collapse;
+
+.page-title {
+    position: absolute;
+    top: 10px;
+    left: 220px; /* 左側に寄せる */
+    font-size: 20px;
+    font-weight: bold;
 }
-th, td {
-    border: 1px solid black;
-    padding: 10px;
+
+
+form {
+    margin-top: 50px;
+    text-align: center;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #218838;
 }
