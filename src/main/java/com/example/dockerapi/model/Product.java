@@ -21,7 +21,6 @@ public class Product {
     @Column(nullable = false)
     private Boolean orderAvailability;
 
-    // ✅ Getter メソッド
     public Long getProductId() {
         return productId;
     }
@@ -42,7 +41,6 @@ public class Product {
         return orderAvailability;
     }
 
-    // ✅ Setter メソッド
     public void setProductId(Long productId) {
         this.productId = productId;
     }
