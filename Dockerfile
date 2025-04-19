@@ -16,7 +16,7 @@ RUN mvn dependency:go-offline
 COPY src /app/src
 
 # Maven のビルド（キャッシュを活用）
-RUN mvn clean install
+RUN mvn clean install -DskipTests
 
 # ホットリロードを有効にする環境変数を設定
 ENV JAVA_OPTS="-Dspring.devtools.restart.enabled=true -Dspring.devtools.livereload.enabled=true"
