@@ -14,6 +14,9 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Arrays;
@@ -81,11 +84,18 @@ public class SalesController {
         writer.writeValues(Arrays.asList("orderId", "orderDate", "orderStatus", "productId", "productName",
                 "totalPrice", "userId"));
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+
         // データ出力
         for (Order o : filtered) {
+            ZonedDateTime jstDateTime = o.getOrderDate()
+                    .atZone(ZoneOffset.UTC)
+                    .withZoneSameInstant(ZoneOffset.ofHours(9));
+            String formattedDate = jstDateTime.format(formatter);
+
             writer.writeValues(Arrays.asList(
                     String.valueOf(o.getOrderId()),
-                    String.valueOf(o.getOrderDate()),
+                    formattedDate, // ★ JST補正＋整形後の日付
                     String.valueOf(o.getOrderStatus()),
                     String.valueOf(o.getProductId()),
                     o.getProductName(),

@@ -10,15 +10,12 @@ document.addEventListener("DOMContentLoaded", function () {
     setupCsvExportButtons(); // CSV出力ボタンをセットアップ
 });
 
-/**
- * ユーザー一覧を取得して表示
- */
 function fetchUsers() {
     fetch("http://localhost:8080/api/users")
         .then(response => response.json())
         .then(data => {
             let table = document.querySelector("#usersTable tbody");
-            table.innerHTML = ""; // 既存の内容をクリア
+            table.innerHTML = "";
             data.forEach(user => {
                 let row = `<tr>
                     <td>${user.userId}</td>
@@ -33,17 +30,13 @@ function fetchUsers() {
         .catch(error => console.error("Error fetching users:", error));
 }
 
-/**
- * 注文一覧を取得して表示
- */
 function fetchOrders() {
     fetch("http://localhost:8080/api/orders")
         .then(response => response.json())
         .then(data => {
             let table = document.querySelector("#ordersTable tbody");
-            table.innerHTML = ""; // 既存の内容をクリア
+            table.innerHTML = "";
 
-            // ステータスの日本語変換マップ
             const statusMap = {
                 1: "受付",
                 2: "決済済み",
@@ -53,8 +46,8 @@ function fetchOrders() {
             };
 
             data.forEach(order => {
-                // 日付フォーマット変換
-                let formattedDate = formatDate(order.orderDate);
+                // サーバーで整形済みなのでそのまま使う
+                let formattedDate = order.orderDate || "日付なし";
 
                 let row = `<tr>
                     <td>${order.orderId}</td>
@@ -71,15 +64,12 @@ function fetchOrders() {
         .catch(error => console.error("Error fetching orders:", error));
 }
 
-/**
- * 商品一覧を取得して表示
- */
 function fetchProducts() {
     fetch("http://localhost:8080/api/products")
         .then(response => response.json())
         .then(data => {
             let table = document.querySelector("#productsTable tbody");
-            table.innerHTML = ""; // 既存の内容をクリア
+            table.innerHTML = "";
             data.forEach(product => {
                 let row = `<tr>
                     <td>${product.productId}</td>
@@ -92,19 +82,4 @@ function fetchProducts() {
             });
         })
         .catch(error => console.error("Error fetching products:", error));
-}
-
-
-/**
- * 日付を "YYYY/MM/DD HH:mm:ss" にフォーマット
- */
-function formatDate(dateArray) {
-    try {
-        if (!Array.isArray(dateArray) || dateArray.length < 6) return "不明";
-        let [year, month, day, hour, minute, second] = dateArray;
-        return `${year}/${month}/${day} ${hour}:${minute}:${second}`;
-    } catch (error) {
-        console.error("Date formatting error:", error);
-        return "不明";
-    }
 }
