@@ -6,8 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (document.getElementById("productsTable")) {
         fetchProducts();
     }
-
-    setupCsvExportButtons(); // CSV出力ボタンをセットアップ
 });
 
 function fetchUsers() {
