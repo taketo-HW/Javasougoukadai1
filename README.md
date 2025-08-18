@@ -3,7 +3,7 @@
 1. このリポジトリを研修用のフォルダにクローンする
 
 ```
-git clone https://github.com/YuYoshida7211/java-basic.git
+git clone https://github.com/taketo-HW/Javasougoukadai1.git
 ```
 
 2. mvn のインストール
@@ -70,6 +70,6 @@ dump する方法
 
 ```
 
-docker exec -i mysql-container mysqldump -u root -p demo > dump.sql
-
+<!-- docker exec -i mysql-container mysqldump -u root -p demo > dump.sql -->
+docker exec -i mysql-container mysqldump -u root -p'root' demo > my_database_dump.sql
 ```

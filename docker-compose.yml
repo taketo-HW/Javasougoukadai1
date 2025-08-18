@@ -11,12 +11,13 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/demo?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Tokyo
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
+      SPRING_PROFILES_ACTIVE: test # ← プロファイル切り替えを追加
     depends_on:
       mysql:
         condition: service_healthy
     volumes:
-      - ./resources:/app/resources # 必要ならリソースをマウント
-      - ~/.m2:/root/.m2 # Maven の依存関係キャッシュ
+      - ./resources:/app/resources
+      - ~/.m2:/root/.m2
 
   mysql:
     image: mysql:8.0.28
@@ -29,7 +30,7 @@ services:
       MYSQL_DATABASE: demo
       TZ: "Asia/Tokyo"
     volumes:
-      - ./conf:/etc/mysql/conf.d
+      - ./conf:/etc/mysql/conf.d # ← 設定ファイルをマウント（my.cnf）
       - db_data:/var/lib/mysql
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
